@@ -49,5 +49,26 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
   document.getElementById("contactForm").reset();
 });
   </script>
+ <script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch(https://eo41x5kvdf5kqs1.m.pipedream.net, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: formData.get("name"),
+      email: formData.get("email")
+    })
+  })
+  .then(() => alert("Отправлено"))
+  .catch(() => alert("Ошибка"));
+});
+ </script>
 </body>
 </html>
+
