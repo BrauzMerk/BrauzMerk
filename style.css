@@ -1,55 +1,55 @@
-тело {
-  маржа :   0;
-  шрифт-семейство :   
-  фон:  радиально-градиент(круг, #1a1a1a, #000);
-  цвет:  белый;
-    дисплей:    гибкий;
-    оправдывает содержание:    center;
-    выравнивание предметов:    center;
-    высота:  100  вх;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle, #1a1a1a, #000);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-контейнер {
-  текст-согласование:  центр;
-  ширина:  90%;
-  макс-ширина:  420px;
-  фон:  ргба(255,255,255,0.05);
-  набивка:  25px;
-    радиус границы:  25  px;
-  фон-фильтр:  размыть(8px);
-  граница:  1px солидно ргба(255,255,255,0.1);
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 25px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .avatar {
-  ширина:  160px;
-  высота:  160px;
-   радиус границы:  50%; 
-  объект-прибор:  cover;
-  маржа-дно:  20px;
-  граница:  3px солидно ргба(255,255,255,0.3);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
 }
 
-входной сигнал {
-  ширина:  100%;
-  набивка:  14px;
-  маржа:  10px 0;
-  граница:  ни одного;
-    радиус границы:  12  px;
-  размер шрифта:  16px;
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
 }
 
-Кнопка {
-  ширина:  100%;
-  набивка:  16px;
-  фон: #0066ff;
-  цвет:  белый;
-  граница:  ни одного;
-    радиус границы:  12  px;
-  размер шрифта:  18px;
-  курсор:  указатель;
-   переходный период:  0.2s; 
+button {
+  width: 100%;
+  padding: 16px;
+  background: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-кнопка:парить {
-  фон: #0050cc;
+button:hover {
+  background: #0050cc;
 }
