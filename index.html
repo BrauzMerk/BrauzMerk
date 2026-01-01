@@ -69,6 +69,31 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   .catch(() => alert("Ошибка"));
 });
  </script>
+  <script>
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value
+    };
+
+    await fetch(https://eo41x5kvdf5kqs1.m.pipedream.net, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    alert("Заявка отправлена");
+    form.reset();
+  });
+  </script>
 </body>
 </html>
+
 
