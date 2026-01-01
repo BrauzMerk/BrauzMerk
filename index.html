@@ -4,97 +4,44 @@
   <meta charset="UTF-8">
   <title>BrauzMerk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      background: #0f0f0f;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .card {
-      background: #151515;
-      padding: 20px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 350px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    p {
-      text-align: center;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-    input, button {
-      width: 100%;
-      margin-top: 10px;
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
-    }
-    input {
-      background: #222;
-      color: #fff;
-    }
-    button {
-      background: #0a5cff;
-      color: #fff;
-      cursor: pointer;
-    }
-  </style>
 </head>
-
 <body>
 
-  <div class="card">
-    <h2>Оставьте свои данные</h2>
-    <p>Мы свяжемся с вами в ближайшее время</p>
+<h2>Оставить заявку</h2>
 
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Ваше имя" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Телефон" required>
-      <button type="submit">Отправить</button>
-    </form>
-  </div>
+<form id="contactForm">
+  <input type="text" name="name" placeholder="Имя" required><br><br>
+  <input type="email" name="email" placeholder="Email" required><br><br>
+  <input type="tel" name="phone" placeholder="Телефон" required><br><br>
+  <button type="submit">Отправить</button>
+</form>
 
-  <script>
-    const form = document.getElementById("contactForm");
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+  const data = {
+    name: this.name.value,
+    email: this.email.value,
+    phone: this.phone.value
+  };
 
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        phone: form.phone.value
-      };
-
-      try {
-        await fetch("https://e041x5kvd5kqs1.m.pipedream.net", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        });
-
-        alert("Заявка отправлена ✅");
-        form.reset();
-      } catch (error) {
-        alert("Ошибка отправки ❌");
-        console.error(error);
-      }
-    });
-  </script>
+  fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    alert("Заявка отправлена");
+    this.reset();
+  })
+  .catch(() => {
+    alert("Ошибка отправки");
+  });
+});
+</script>
 
 </body>
 </html>
