@@ -12,12 +12,16 @@
     <h1>Оставьте свои данные</h1>
     <p class="subtitle">Мы свяжемся с вами в ближайшее время</p>
 
-    <form action="send.php" method="POST">
+    <form id="contactForm">
       <input type="text" name="name" placeholder="Ваше имя" required>
       <input type="email" name="email" placeholder="Email" required>
       <input type="tel" name="phone" placeholder="Телефон" required>
       <button type="submit">Отправить</button>
     </form>
+
+    <p id="thankyou" style="display:none; margin-top:20px; color:#0f0;">Спасибо! Мы с вами свяжемся.</p>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
