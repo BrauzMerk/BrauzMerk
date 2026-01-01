@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Связаться со мной</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <img src="avatar.jpg" class="avatar" alt="avatar">
+    <h1>Оставьте свои данные</h1>
+    <p class="subtitle">Мы свяжемся с вами в ближайшее время</p>
+
+    <form action="send.php" method="POST">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Телефон" required>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+</body>
+</html>
