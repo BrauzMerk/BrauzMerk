@@ -23,5 +23,32 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+const webhook = https://eo41x5kvdf5kqs1.m.pipedream.net;
+
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  // отправка
+  await fetch(webhook, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone })
+  });
+
+  // сообщение пользователю
+  const response = document.getElementById("response");
+  response.innerText = "Спасибо! Мы с вами свяжемся позже";
+  response.style.display = "block";
+
+  // очистка
+  document.getElementById("contactForm").reset();
+});
+  </script>
 </body>
 </html>
+
