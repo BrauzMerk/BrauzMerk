@@ -1,99 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Связаться со мной</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>BrauzMerk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="container">
-    <img src="avatar.jpg" class="avatar" alt="avatar">
-    <h1>Оставьте свои данные</h1>
-    <p class="subtitle">Мы свяжемся с вами в ближайшее время</p>
 
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Ваше имя" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Телефон" required>
-      <button type="submit">Отправить</button>
-    </form>
+  <h2>Оставить заявку</h2>
 
-    <p id="thankyou" style="display:none; margin-top:20px; color:#0f0;">Спасибо! Мы с вами свяжемся.</p>
-  </div>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Ваше имя" required><br><br>
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <input type="tel" name="phone" placeholder="Телефон" required><br><br>
+    <button type="submit">Отправить</button>
+  </form>
 
-  <script src="script.js"></script>
   <script>
-const webhook = https://eo41x5kvdf5kqs1.m.pipedream.net;
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
-
-  // отправка
-  await fetch(webhook, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, phone })
-  });
-
-  // сообщение пользователю
-  const response = document.getElementById("response");
-  response.innerText = "Спасибо! Мы с вами свяжемся позже";
-  response.style.display = "block";
-
-  // очистка
-  document.getElementById("contactForm").reset();
-});
-  </script>
- <script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const formData = new FormData(this);
-
-  fetch(https://eo41x5kvdf5kqs1.m.pipedream.net, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: formData.get("name"),
-      email: formData.get("email")
-    })
-  })
-  .then(() => alert("Отправлено"))
-  .catch(() => alert("Ошибка"));
-});
- </script>
-  <script>
-  const form = document.getElementById("contactForm");
-
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value
-    };
-
-    await fetch(https://eo41x5kvdf5kqs1.m.pipedream.net, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: this.name.value,
+          email: this.email.value,
+          phone: this.phone.value
+        })
+      })
+      .then(() => {
+        alert("Заявка отправлена");
+        this.reset();
+      })
+      .catch(() => {
+        alert("Ошибка отправки");
+      });
     });
-
-    alert("Заявка отправлена");
-    form.reset();
-  });
   </script>
+
 </body>
 </html>
-
-
