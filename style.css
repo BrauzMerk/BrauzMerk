@@ -53,3 +53,11 @@ button {
 button:hover {
   background: #0050cc;
 }
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #6c7cff, #8a5cff);
+  margin: 14px auto 22px;
+  border-radius: 2px;
+}
