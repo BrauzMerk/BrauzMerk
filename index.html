@@ -2,40 +2,43 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>BrauzMerk</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма</title>
 </head>
 <body>
 
-<h2>Оставить заявку</h2>
+  <h2>Тест формы</h2>
 
-<form id="contactForm">
-  <input type="text" id="name" placeholder="Имя" required><br><br>
-  <input type="email" id="email" placeholder="Email" required><br><br>
-  <input type="tel" id="phone" placeholder="Телефон" required><br><br>
-  <button type="submit">Отправить</button>
-</form>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Имя" required><br><br>
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <input type="tel" name="phone" placeholder="Телефон" required><br><br>
+    <button type="submit">Отправить</button>
+  </form>
 
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+  <p id="status"></p>
 
-  fetch(https://eo41x5kvdf5kqs1.m.pipedream.net, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value
-    })
-  })
-  .then(() => alert("Отправлено"))
-  .catch(() => alert("Ошибка"));
-});
-</script>
-<script src="script.js"></script>
+  <script>
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // 🔥 КЛЮЧЕВОЕ
+
+      const formData = new FormData(form);
+
+      fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
+        method: "POST",
+        body: formData
+      })
+      .then(() => {
+        status.innerText = "✅ Заявка отправлена";
+        form.reset();
+      })
+      .catch(() => {
+        status.innerText = "❌ Ошибка отправки";
+      });
+    });
+  </script>
+
 </body>
 </html>
-
