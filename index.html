@@ -15,10 +15,15 @@
       margin: 0;
       min-height: 100vh;
       background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12);
+      color: #fff;
+    }
+
+    .wrap {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      padding: 40px 16px;
     }
 
     .card {
@@ -30,6 +35,12 @@
       padding: 32px;
       box-shadow: 0 20px 60px rgba(0,0,0,.6);
       border: 1px solid rgba(255,255,255,0.08);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
@@ -51,10 +62,7 @@
       color: #fff;
       font-size: 15px;
       outline: none;
-    }
-
-    input::placeholder {
-      color: #aaa;
+      transition: border 0.2s;
     }
 
     input:focus {
@@ -72,10 +80,16 @@
       cursor: pointer;
       background: linear-gradient(135deg, #6c7cff, #8a5cff);
       color: #fff;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(108,124,255,.4);
     }
 
     button:disabled {
-      opacity: 0.6;
+      opacity: 0.7;
       cursor: not-allowed;
     }
 
@@ -89,11 +103,47 @@
     .success {
       text-align: center;
       font-size: 16px;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    /* второй экран */
+    .section {
+      padding: 80px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.8s;
+    }
+
+    .section-inner.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 24px;
     }
   </style>
 </head>
 
 <body>
+
+<div class="wrap">
   <div class="card">
     <h1>Оставить заявку</h1>
 
@@ -101,46 +151,63 @@
       <div class="field">
         <input type="text" name="name" placeholder="Имя" required>
       </div>
-
       <div class="field">
         <input type="email" name="email" placeholder="Email" required>
       </div>
-
       <div class="field">
         <input type="tel" name="phone" placeholder="Телефон" required>
       </div>
-
       <button type="submit">Отправить заявку</button>
     </form>
 
     <div class="hint">Мы свяжемся с вами в ближайшее время</div>
   </div>
+</div>
 
-  <script>
-    const form = document.getElementById("form");
+<section class="section">
+  <div class="section-inner" id="features">
+    <div class="grid">
+      <div class="box">📩 Мгновенные заявки в Telegram</div>
+      <div class="box">🔒 Безопасно и без CRM</div>
+      <div class="box">📱 Отлично работает с телефона</div>
+      <div class="box">💰 Подходит для продаж и услуг</div>
+    </div>
+  </div>
+</section>
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+<script>
+  const form = document.getElementById("form");
+  const features = document.getElementById("features");
 
-      const btn = form.querySelector("button");
-      btn.disabled = true;
-      btn.textContent = "Отправка...";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const data = new FormData(form);
+    const btn = form.querySelector("button");
+    btn.disabled = true;
+    btn.textContent = "Отправка...";
 
-      try {
-        await fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
-          method: "POST",
-          body: data
-        });
+    try {
+      await fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
+        method: "POST",
+        body: new FormData(form)
+      });
 
-        form.innerHTML = '<div class="success">✅ Заявка отправлена</div>';
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = "Отправить заявку";
-        alert("Ошибка отправки");
-      }
-    });
-  </script>
+      form.innerHTML = '<div class="success">✅ Заявка отправлена</div>';
+    } catch {
+      btn.disabled = false;
+      btn.textContent = "Отправить заявку";
+      alert("Ошибка отправки");
+    }
+  });
+
+  // анимация второго экрана
+  window.addEventListener("scroll", () => {
+    const rect = features.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      features.classList.add("visible");
+    }
+  });
+</script>
+
 </body>
 </html>
