@@ -1,44 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Форма</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Оставить заявку</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input:focus {
+      border-color: #6c7cff;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border-radius: 14px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #6c7cff, #8a5cff);
+      color: #fff;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .hint {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    .success {
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="card">
+    <h1>Оставить заявку</h1>
 
-  <h2>Тест формы</h2>
+    <form id="form">
+      <div class="field">
+        <input type="text" name="name" placeholder="Имя" required>
+      </div>
 
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Имя" required><br><br>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="tel" name="phone" placeholder="Телефон" required><br><br>
-    <button type="submit">Отправить</button>
-  </form>
+      <div class="field">
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
 
-  <p id="status"></p>
+      <div class="field">
+        <input type="tel" name="phone" placeholder="Телефон" required>
+      </div>
+
+      <button type="submit">Отправить заявку</button>
+    </form>
+
+    <div class="hint">Мы свяжемся с вами в ближайшее время</div>
+  </div>
 
   <script>
-    const form = document.getElementById("contactForm");
-    const status = document.getElementById("status");
+    const form = document.getElementById("form");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // 🔥 КЛЮЧЕВОЕ
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-      const formData = new FormData(form);
+      const btn = form.querySelector("button");
+      btn.disabled = true;
+      btn.textContent = "Отправка...";
 
-      fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
-        method: "POST",
-        body: formData
-      })
-      .then(() => {
-        status.innerText = "✅ Заявка отправлена";
-        form.reset();
-      })
-      .catch(() => {
-        status.innerText = "❌ Ошибка отправки";
-      });
+      const data = new FormData(form);
+
+      try {
+        await fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
+          method: "POST",
+          body: data
+        });
+
+        form.innerHTML = '<div class="success">✅ Заявка отправлена</div>';
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = "Отправить заявку";
+        alert("Ошибка отправки");
+      }
     });
   </script>
-
 </body>
 </html>
