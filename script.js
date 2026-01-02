@@ -1,28 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  if (!form) {
-    alert("Форма не найдена");
-    return;
-  }
+  const name = this.name.value;
+  const email = this.email.value;
+  const phone = this.phone.value;
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const data = {
-      name: form.querySelector('input[name="name"]').value,
-      email: form.querySelector('input[name="email"]').value,
-      phone: form.querySelector('input[name="phone"]').value
-    };
-
-    fetch(https://eo41x5kvdf5kqs1.m.pipedream.net, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+  fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      phone: phone
     })
-    .then(() => alert("Отправлено"))
-    .catch(() => alert("Ошибка отправки"));
+  })
+  .then(() => {
+    alert("Заявка отправлена!");
+    this.reset();
+  })
+  .catch(() => {
+    alert("Ошибка отправки");
   });
 });
