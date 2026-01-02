@@ -1,25 +1,28 @@
-const BOT_TOKEN = 8515711712:AAFzTpjofV2CEUFbjpnSQOxx88nt1NVBkcg; // вставь свой токен только у себя
-const CHAT_ID = 5247142706;       // вставь свой chat_id только у себя
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
 
-document.getElementById("contactForm").addEventListener("submit", function(e) {
+  if (!form) {
+    alert("Форма не найдена");
+    return;
+  }
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const name = this.name.value;
-    const email = this.email.value;
-    const phone = this.phone.value;
+    const data = {
+      name: form.querySelector('input[name="name"]').value,
+      email: form.querySelector('input[name="email"]').value,
+      phone: form.querySelector('input[name="phone"]').value
+    };
 
-    const message = `🐱‍👤 Новая заявка с сайта:\nИмя: ${name}\nEmail: ${email}\nТелефон: ${phone}`;
-
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`;
-
-    fetch(url)
-        .then(response => {
-            if(response.ok){
-                document.getElementById("contactForm").style.display = "none";
-                document.getElementById("thankyou").style.display = "block";
-            } else {
-                alert("Ошибка отправки. Попробуйте еще раз.");
-            }
-        })
-        .catch(err => alert("Ошибка сети: " + err));
+    fetch(https://eo41x5kvdf5kqs1.m.pipedream.net, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(() => alert("Отправлено"))
+    .catch(() => alert("Ошибка отправки"));
+  });
 });
