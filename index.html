@@ -19,7 +19,7 @@
       min-height: 100vh;
       background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12);
       color: #fff;
-      font-size: 17px; /* ↑ увеличен базовый текст */
+      font-size: 17px;
     }
 
     a { color: #6c7cff; text-decoration: none; }
@@ -32,11 +32,7 @@
 
     h1 { font-size: 36px; }
     h2 { font-size: 30px; }
-    h1,h2,h3 {
-      margin: 0 0 20px;
-      font-family: 'Playfair Display', serif;
-    }
-
+    h1,h2,h3 { margin: 0 0 20px; font-family: 'Playfair Display', serif; }
     p { line-height: 1.7; margin-bottom: 20px; }
 
     /* Слайдер */
@@ -74,7 +70,7 @@
       background: rgba(255,255,255,0.05);
       padding: 14px 20px;
       border-radius: 16px;
-      margin-bottom: 16px; /* ↑ блок поднят выше */
+      margin-bottom: 16px;
     }
 
     .social-links a {
@@ -110,7 +106,6 @@
       font-size: 16px;
       outline: none;
     }
-
     input::placeholder { color: #aaa; }
 
     button.submit-btn {
@@ -164,9 +159,9 @@
   <section class="section">
     <h2>Почему выбирают нас</h2>
     <p>
-      Мы создаем сайты премиального уровня, которые будут полностью адаптированы
-      под ваши потребности. Красивый дизайн, удобная навигация, возможность менять
-      контент, фотографии и формы.
+      Мы создаем сайты премиального уровня, полностью адаптированные
+      под ваши потребности. Красивый дизайн, удобная навигация,
+      возможность менять контент, фотографии и формы.
     </p>
   </section>
 
@@ -180,6 +175,7 @@
           <a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a>
           <a href="#"><i class="fa-brands fa-telegram"></i>Telegram</a>
           <a href="#"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+          <a href="#form" class="submit-btn">Оформить заявку</a>
         </div>
       </div>
 
@@ -210,19 +206,36 @@
       btn.disabled = true;
       btn.textContent = "Отправка...";
 
-      const data = new FormData(form);
+      const name = form.name.value;
+      const phone = form.phone.value;
+
+      const payload = { name, phone };
 
       try {
+        // Отправка в Pipedream
         await fetch("https://eoq0utkld8mn942.m.pipedream.net", {
           method: "POST",
-          body: data
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
         });
+
+        // Отправка в Telegram
+        await fetch(`https://api.telegram.org/bot8515711712:AAFZsU9dlgQ_QG5W438teb1H01pEtOMIbyM/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: 5247142706,
+            text: `Новая заявка\nИмя: ${name}\nТелефон: ${phone}`
+          })
+        });
+
         form.style.display = 'none';
         successMsg.style.display = 'block';
       } catch (err) {
         btn.disabled = false;
         btn.textContent = "Отправить заявку";
         alert("Ошибка отправки");
+        console.error(err);
       }
     });
   </script>
