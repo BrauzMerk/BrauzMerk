@@ -8,42 +8,85 @@
   <!-- Шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Иконки Font Awesome -->
+  <!-- Иконки -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { margin: 0; min-height: 100vh; background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12); color: #fff; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12);
+      color: #fff;
+      font-size: 17px; /* ↑ увеличен базовый текст */
+    }
+
     a { color: #6c7cff; text-decoration: none; }
-    .section { padding: 60px 20px; max-width: 1200px; margin: auto; }
-    h1,h2,h3 { margin: 0 0 20px; font-family: 'Playfair Display', serif; }
-    p { line-height: 1.6; margin-bottom: 20px; }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h1,h2,h3 {
+      margin: 0 0 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    p { line-height: 1.7; margin-bottom: 20px; }
 
     /* Слайдер */
-    .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding-bottom: 16px; }
-    .slide { min-width: 300px; flex: 0 0 auto; scroll-snap-align: start; border-radius: 16px; overflow: hidden; position: relative; background: #222; color: #fff; text-align: center; }
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding-bottom: 16px;
+    }
+    .slide {
+      min-width: 300px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #222;
+      text-align: center;
+    }
     .slide img { width: 100%; display: block; }
-    .slide-text { padding: 12px; }
+    .slide-text { padding: 14px; }
 
     /* Соцсети */
+    .social-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
     .social-block {
       display: flex;
-      align-items: center;
       justify-content: center;
       background: rgba(255,255,255,0.05);
-      padding: 16px 20px;
+      padding: 14px 20px;
       border-radius: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 16px; /* ↑ блок поднят выше */
     }
+
     .social-links a {
-      margin-right: 18px;
+      margin-right: 20px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-size: 17px;
     }
     .social-links a:last-child { margin-right: 0; }
-    .social-links i { font-size: 18px; }
+    .social-links i { font-size: 19px; }
 
     /* Форма */
     .form-card {
@@ -54,43 +97,44 @@
       max-width: 500px;
       margin: auto;
     }
-    .field { margin-bottom: 14px; }
+
+    .field { margin-bottom: 16px; }
+
     input {
       width: 100%;
-      padding: 14px 16px;
+      padding: 15px 16px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.15);
       background: rgba(0,0,0,0.35);
       color: #fff;
-      font-size: 15px;
+      font-size: 16px;
       outline: none;
     }
+
     input::placeholder { color: #aaa; }
 
     button.submit-btn {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       border-radius: 14px;
       border: none;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       cursor: pointer;
       background: linear-gradient(135deg, #6c7cff, #8a5cff);
       color: #fff;
     }
 
-    /* Успех */
     .success {
       text-align: center;
-      font-size: 16px;
+      font-size: 17px;
       margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Раздел 1 -->
-  <section class="section" id="section1">
+  <section class="section">
     <h1>Добро пожаловать!</h1>
     <p>
       Здесь мы показываем, как будет выглядеть ваш сайт после покупки.
@@ -99,27 +143,25 @@
     </p>
   </section>
 
-  <!-- Раздел 2 -->
-  <section class="section" id="section2">
+  <section class="section">
     <h2>Наши продукты</h2>
     <div class="slider">
       <div class="slide">
-        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт">
+        <img src="https://via.placeholder.com/300x200">
         <div class="slide-text">Фурнитура 1</div>
       </div>
       <div class="slide">
-        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт">
+        <img src="https://via.placeholder.com/300x200">
         <div class="slide-text">Фурнитура 2</div>
       </div>
       <div class="slide">
-        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт">
+        <img src="https://via.placeholder.com/300x200">
         <div class="slide-text">Фурнитура 3</div>
       </div>
     </div>
   </section>
 
-  <!-- Раздел 3 -->
-  <section class="section" id="section3">
+  <section class="section">
     <h2>Почему выбирают нас</h2>
     <p>
       Мы создаем сайты премиального уровня, которые будут полностью адаптированы
@@ -128,16 +170,16 @@
     </p>
   </section>
 
-  <!-- Форма -->
   <section class="section">
     <div class="form-card">
 
-      <!-- Соцсети -->
+      <div class="social-title">Наши соц.сети</div>
+
       <div class="social-block">
         <div class="social-links">
           <a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a>
-          <a href="#"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
           <a href="#"><i class="fa-brands fa-telegram"></i>Telegram</a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
         </div>
       </div>
 
