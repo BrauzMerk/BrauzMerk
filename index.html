@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Сайт для клиентов</title>
 
+  <!-- Шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Иконки Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -21,21 +25,66 @@
     .slide img { width: 100%; display: block; }
     .slide-text { padding: 12px; }
 
-    /* Соцсети и кнопка */
-    .social-block { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.05); padding: 16px 20px; border-radius: 16px; margin-bottom: 20px; }
-    .social-links a { margin-right: 16px; font-weight: 600; }
+    /* Соцсети */
+    .social-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      padding: 16px 20px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+    .social-links a {
+      margin-right: 18px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
     .social-links a:last-child { margin-right: 0; }
-    .btn-scroll { padding: 10px 18px; border-radius: 12px; border: none; background: linear-gradient(135deg, #6c7cff, #8a5cff); color: #fff; font-weight: 600; cursor: pointer; }
+    .social-links i { font-size: 18px; }
 
     /* Форма */
-    .form-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(20px); border-radius: 20px; padding: 32px; max-width: 500px; margin: auto; }
+    .form-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 500px;
+      margin: auto;
+    }
     .field { margin-bottom: 14px; }
-    input { width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.35); color: #fff; font-size: 15px; outline: none; }
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+    }
     input::placeholder { color: #aaa; }
-    button.submit-btn { width: 100%; padding: 14px; border-radius: 14px; border: none; font-size: 16px; font-weight: 600; cursor: pointer; background: linear-gradient(135deg, #6c7cff, #8a5cff); color: #fff; }
 
-    /* Успех отправки */
-    .success { text-align: center; font-size: 16px; margin-top: 20px; }
+    button.submit-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #6c7cff, #8a5cff);
+      color: #fff;
+    }
+
+    /* Успех */
+    .success {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -43,54 +92,69 @@
   <!-- Раздел 1 -->
   <section class="section" id="section1">
     <h1>Добро пожаловать!</h1>
-    <p>Здесь мы показываем, как будет выглядеть ваш сайт после покупки. Вы сможете изменять тексты, фотографии и все элементы под ваши продукты или услуги. Заявки ваших клиентов будут приходить к вам в Telegram/WhatsApp.</p>
-    
-    <!-- Соцсети и кнопка -->
-    <div class="social-block">
-      <div class="social-links">
-        <a href="#">Instagram</a>
-        <a href="#">WhatsApp</a>
-        <a href="#">Telegram</a>
-      </div>
-      <button class="btn-scroll" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});">Оформить заявку</button>
-    </div>
+    <p>
+      Здесь мы показываем, как будет выглядеть ваш сайт после покупки.
+      Вы сможете изменять тексты, фотографии и все элементы под ваши продукты
+      или услуги. Заявки ваших клиентов будут приходить к вам в Telegram/WhatsApp.
+    </p>
   </section>
 
-  <!-- Раздел 2: Слайдер -->
+  <!-- Раздел 2 -->
   <section class="section" id="section2">
     <h2>Наши продукты</h2>
     <div class="slider">
       <div class="slide">
-        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт" alt="Продукт 1">
+        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт">
         <div class="slide-text">Фурнитура 1</div>
       </div>
       <div class="slide">
-        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт" alt="Продукт 2">
+        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт">
         <div class="slide-text">Фурнитура 2</div>
       </div>
       <div class="slide">
-        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт" alt="Продукт 3">
+        <img src="https://via.placeholder.com/300x200?text=Здесь+может+быть+ваш+продукт">
         <div class="slide-text">Фурнитура 3</div>
       </div>
     </div>
   </section>
 
-  <!-- Раздел 3: Дополнительно -->
+  <!-- Раздел 3 -->
   <section class="section" id="section3">
     <h2>Почему выбирают нас</h2>
-    <p>Мы создаем сайты премиального уровня, которые будут полностью адаптированы под ваши потребности. Красивый дизайн, удобная навигация, возможность менять контент, фотографии и формы.</p>
+    <p>
+      Мы создаем сайты премиального уровня, которые будут полностью адаптированы
+      под ваши потребности. Красивый дизайн, удобная навигация, возможность менять
+      контент, фотографии и формы.
+    </p>
   </section>
 
   <!-- Форма -->
   <section class="section">
     <div class="form-card">
+
+      <!-- Соцсети -->
+      <div class="social-block">
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+          <a href="#"><i class="fa-brands fa-telegram"></i>Telegram</a>
+        </div>
+      </div>
+
       <form id="form">
-        <div class="field"><input type="text" name="name" placeholder="Имя" required></div>
-        <div class="field"><input type="email" name="email" placeholder="Email" required></div>
-        <div class="field"><input type="tel" name="phone" placeholder="Телефон" required></div>
+        <div class="field">
+          <input type="text" name="name" placeholder="Имя" required>
+        </div>
+        <div class="field">
+          <input type="tel" name="phone" placeholder="Телефон" required>
+        </div>
         <button type="submit" class="submit-btn">Отправить заявку</button>
       </form>
-      <div class="success" id="success-msg" style="display:none;">✅ Заявка отправлена</div>
+
+      <div class="success" id="success-msg" style="display:none;">
+        ✅ Заявка отправлена
+      </div>
+
     </div>
   </section>
 
@@ -107,7 +171,10 @@
       const data = new FormData(form);
 
       try {
-        await fetch("https://eoq0utkld8mn942.m.pipedream.net", { method: "POST", body: data });
+        await fetch("https://eoq0utkld8mn942.m.pipedream.net", {
+          method: "POST",
+          body: data
+        });
         form.style.display = 'none';
         successMsg.style.display = 'block';
       } catch (err) {
@@ -117,5 +184,6 @@
       }
     });
   </script>
+
 </body>
 </html>
