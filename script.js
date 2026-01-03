@@ -40,3 +40,10 @@ form.addEventListener("submit", async (e) => {
     alert("Ошибка отправки, попробуйте позже.");
   }
 });
+
+const burger = document.getElementById("burger");
+const sideMenu = document.getElementById("sideMenu");
+
+burger.addEventListener("click", () => {
+  sideMenu.classList.toggle("open");
+});
