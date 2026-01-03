@@ -1,30 +1,43 @@
-// Получаем форму по id
+// ID формы
 const form = document.getElementById("form");
+
+// Telegram настройки
+const TELEGRAM_TOKEN = 8515711712:AAFZsU9dlgQ_QG5W438teb1H01pEtOMIbyM; // вставь сюда токен бота
+const TELEGRAM_CHAT_ID = 5247142706; // вставь сюда chat_id (куда приходят заявки)
 
 // Обработчик отправки формы
 form.addEventListener("submit", async (e) => {
-  e.preventDefault(); // Отменяем стандартное поведение формы
+  e.preventDefault();
 
-  // Блокируем кнопку, меняем текст
   const btn = form.querySelector("button");
   btn.disabled = true;
   btn.textContent = "Отправка...";
 
-  // Считываем данные формы
+  // Получаем данные из формы
   const name = form.name.value;
   const email = form.email.value;
   const phone = form.phone.value;
 
   try {
-    // Отправка на Pipedream / webhook
+    // Отправка на Pipedream
     await fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, phone })
     });
 
-    // Показать сообщение об успешной отправке
-    form.innerHTML = '<div class="success">✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.</div>';
+    // Отправка в Telegram
+    await fetch(`https://api.telegram.org/bot${8515711712:AAFZsU9dlgQ_QG5W438teb1H01pEtOMIbyM}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: 5247142706,
+        text: `📩 Новая заявка\nИмя: ${name}\nEmail: ${email}\nТелефон: ${phone}`
+      })
+    });
+
+    // Показать успех
+    form.innerHTML = '<div class="success">✅ Заявка отправлена! Мы свяжемся с вами.</div>';
 
   } catch (err) {
     console.error(err);
