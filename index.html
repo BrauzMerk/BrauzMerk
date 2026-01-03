@@ -1,124 +1,176 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ваш продукт онлайн</title>
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Оставить заявку</title>
+
   <!-- Шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-    html { scroll-behavior: smooth; }
-    body { background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12); color: #fff; }
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
 
-    nav { position: fixed; top:0; width:100%; display:flex; justify-content:center; background: rgba(0,0,0,0.4); padding: 12px; z-index:1000; }
-    nav a { color:#fff; margin: 0 15px; text-decoration:none; font-weight:500; transition: 0.3s; }
-    nav a:hover { color:#6c7cff; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      color: #fff;
+      padding: 40px 20px;
+    }
 
-    section { min-height: 100vh; display:flex; align-items:center; justify-content:center; flex-direction:column; padding: 60px 20px; }
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 40px;
+    }
 
-    /* Главная страница */
-    #home { background: radial-gradient(1200px at 50% 20%, #2a2a3d, #0b0b12); text-align:center; }
-    #home h1 { font-family:'Playfair Display', serif; font-size: 42px; margin-bottom:20px; }
-    #home p { max-width:600px; margin:0 auto 40px; font-size:18px; line-height:1.6; }
+    h1 {
+      margin: 0 0 20px;
+      font-size: 28px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
 
-    /* Слайдер */
-    .slider { display:flex; overflow:hidden; max-width:600px; border-radius:16px; margin:0 auto; }
-    .slide { min-width:100%; transition:0.5s; position:relative; display:flex; align-items:center; justify-content:center; background:#333; height:300px; }
-    .slide span { color:#fff; font-size:20px; font-weight:600; text-align:center; }
+    .socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
 
-    .slider-buttons { margin-top:20px; display:flex; justify-content:center; gap:10px; }
-    .slider-buttons button { padding:8px 16px; border:none; border-radius:8px; cursor:pointer; background:#6c7cff; color:#fff; transition:0.3s; }
-    .slider-buttons button:hover { background:#8a5cff; }
+    .socials div {
+      font-size: 14px;
+      color: #aaa;
+      cursor: default;
+    }
 
-    /* Информация */
-    #info { background: radial-gradient(1200px at 80% 30%, #1e1e2f, #0b0b12); max-width:900px; margin:0 auto; border-radius:20px; padding:40px; text-align:left; }
-    #info h2 { font-family:'Playfair Display', serif; font-size:32px; margin-bottom:20px; }
-    #info p { font-size:16px; line-height:1.7; margin-bottom:16px; }
+    .btn-scroll {
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #6c7cff, #8a5cff);
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+    }
 
-    /* Контакты / форма */
-    #contact { display:flex; justify-content:center; align-items:center; }
-    .card { background: rgba(255,255,255,0.06); backdrop-filter: blur(20px); border-radius: 20px; padding: 32px; max-width:420px; width:100%; box-shadow: 0 20px 60px rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,0.08); }
-    .card h2 { font-family:'Playfair Display', serif; font-size:28px; text-align:center; margin-bottom:20px; }
-    .field { margin-bottom:14px; }
-    input { width:100%; padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.15); background:rgba(0,0,0,0.35); color:#fff; font-size:15px; outline:none; }
-    input::placeholder { color:#aaa; }
-    button.submit-btn { width:100%; padding:14px; margin-top:10px; border-radius:14px; border:none; font-size:16px; font-weight:600; cursor:pointer; background: linear-gradient(135deg, #6c7cff, #8a5cff); color:#fff; }
-    button.submit-btn:disabled { opacity:0.6; cursor:not-allowed; }
-    .success { text-align:center; font-size:16px; margin-top:10px; }
+    .btn-scroll:hover {
+      opacity: 0.85;
+    }
 
+    .field {
+      margin-bottom: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input:focus {
+      border-color: #6c7cff;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border-radius: 14px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #6c7cff, #8a5cff);
+      color: #fff;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .hint {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    .success {
+      text-align: center;
+      font-size: 16px;
+    }
   </style>
 </head>
 
 <body>
-  <nav>
-    <a href="#home">Главная</a>
-    <a href="#info">Информация</a>
-    <a href="#contact">Контакты</a>
-  </nav>
 
-  <!-- Главная -->
-  <section id="home">
-    <h1>Добро пожаловать!</h1>
-    <p>С помощью этого сайта вы можете оставить заявку, и мы покажем, как ваш продукт будет представлен онлайн. Премиальный дизайн, простая форма и быстрый отклик.</p>
+  <h1>Добро пожаловать!</h1>
 
-    <div class="slider">
-      <div class="slide"><span>Здесь может быть ваш продукт 1</span></div>
-      <div class="slide"><span>Здесь может быть ваш продукт 2</span></div>
-      <div class="slide"><span>Здесь может быть ваш продукт 3</span></div>
-    </div>
-    <div class="slider-buttons">
-      <button onclick="prevSlide()">◀</button>
-      <button onclick="nextSlide()">▶</button>
-    </div>
-  </section>
+  <div class="socials">
+    <div>Здесь будут ссылки на Instagram</div>
+    <div>Здесь будут ссылки на WhatsApp</div>
+    <div>Здесь будут ссылки на Telegram</div>
+    <button class="btn-scroll" onclick="scrollToForm()">Оформить заявку</button>
+  </div>
 
-  <!-- Информация -->
-  <section id="info">
-    <h2>О продукте</h2>
-    <p>Наши перегородки создаются с премиальной точностью и современными материалами. Они легко интегрируются в любой интерьер и делают пространство элегантным и функциональным.</p>
-    <p>Вы получаете готовый онлайн-пример продукта, фотографии, описание и возможность для клиентов оставить заявку прямо с сайта. Всё продумано, чтобы повышать доверие и продажи.</p>
-    <p>Простая форма заявки и мгновенные уведомления через Telegram позволяют вам быстро реагировать на интерес клиентов.</p>
-  </section>
-
-  <!-- Контакты / форма -->
-  <section id="contact">
-    <div class="card">
-      <h2>Оставить заявку</h2>
-      <form id="contactForm">
-        <div class="field"><input type="text" name="name" placeholder="Имя" required></div>
-        <div class="field"><input type="tel" name="phone" placeholder="Телефон" required></div>
-        <button type="submit" class="submit-btn">Отправить заявку</button>
-      </form>
-      <div class="success" id="successMessage"></div>
-    </div>
-  </section>
+  <div class="card" id="formCard">
+    <h1>Форма заявки</h1>
+    <form id="form">
+      <div class="field">
+        <input type="text" name="name" placeholder="Имя" required>
+      </div>
+      <div class="field">
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="field">
+        <input type="tel" name="phone" placeholder="Телефон" required>
+      </div>
+      <button type="submit">Отправить заявку</button>
+    </form>
+    <div class="hint">Заявки ваших клиентов будут приходить к вам в Telegram/WhatsApp</div>
+  </div>
 
   <script>
-    // Слайдер
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function showSlide(index){
-      slides.forEach((slide,i)=> slide.style.transform = `translateX(${100*(i-index)}%)`);
+    function scrollToForm() {
+      const formCard = document.getElementById("formCard");
+      formCard.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function nextSlide(){ currentSlide = (currentSlide+1)%slides.length; showSlide(currentSlide); }
-    function prevSlide(){ currentSlide = (currentSlide-1+slides.length)%slides.length; showSlide(currentSlide); }
+    const form = document.getElementById("form");
 
-    showSlide(currentSlide);
-
-    // Форма
-    const form = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
-
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const btn = form.querySelector('button');
+      const btn = form.querySelector("button");
       btn.disabled = true;
-      btn.textContent = 'Отправка...';
+      btn.textContent = "Отправка...";
 
       const data = new FormData(form);
 
@@ -127,16 +179,15 @@
           method: "POST",
           body: data
         });
-        successMessage.textContent = '✅ Заявка отправлена';
-        form.reset();
-        btn.disabled = false;
-        btn.textContent = 'Отправить заявку';
+
+        form.innerHTML = '<div class="success">✅ Заявка отправлена</div>';
       } catch (err) {
-        alert('Ошибка отправки');
         btn.disabled = false;
-        btn.textContent = 'Отправить заявку';
+        btn.textContent = "Отправить заявку";
+        alert("Ошибка отправки");
       }
     });
   </script>
+
 </body>
 </html>
