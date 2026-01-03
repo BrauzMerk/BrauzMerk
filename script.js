@@ -23,11 +23,11 @@ form.addEventListener("submit", async (e) => {
     });
 
     // 2️⃣ Отправка в Telegram без \n и <br>
-    await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+    await fetch(`https://api.telegram.org/bot${8515711712:AAFZsU9dlgQ_QG5W438teb1H01pEtOMIbyM}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
+        chat_id: 5247142706,
         text: `📩 Новая заявка Имя: ${name} Email: ${email} Телефон: ${phone}`
       })
     });
