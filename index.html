@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Премиальная заявка</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- ШРИФТЫ (как на премиум сайтах) -->
+  <title>Душевые перегородки на заказ</title>
+
+  <!-- Шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(1200px at 20% 10%, #1c1c2b, #0a0a12);
-      color: #fff;
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: radial-gradient(1200px at 20% 10%, #1b1b2f, #0a0a12);
+      color: #ffffff;
       line-height: 1.6;
-    }
-
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
     }
 
     section {
@@ -36,129 +31,119 @@
       margin: 0 auto;
     }
 
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+    }
+
+    h2 {
+      font-size: 34px;
+      text-align: center;
+    }
+
+    p {
+      color: #cfcfcf;
+      font-size: 17px;
+    }
+
     /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      text-align: center;
     }
 
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
+    .hero-content {
+      max-width: 600px;
     }
 
-    .hero p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      color: #cfcfd9;
+    .hero ul {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0;
+    }
+
+    .hero li {
+      margin-bottom: 12px;
+      font-size: 17px;
     }
 
     .hero button {
-      padding: 16px 34px;
-      border-radius: 40px;
-      border: none;
+      padding: 16px 28px;
       font-size: 16px;
-      font-weight: 600;
+      border-radius: 14px;
+      border: none;
       cursor: pointer;
       background: linear-gradient(135deg, #6c7cff, #8a5cff);
       color: #fff;
     }
 
-    .arrow {
-      margin-top: 40px;
-      font-size: 22px;
-      opacity: .7;
-    }
-
     /* BENEFITS */
-    .benefits {
-      background: rgba(255,255,255,0.03);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .benefits h2 {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .benefits p {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px;
-      color: #cfcfd9;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+      gap: 20px;
+      margin-top: 40px;
     }
 
     .card {
       background: rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 28px;
       border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 20px 50px rgba(0,0,0,.4);
+      border-radius: 20px;
+      padding: 26px;
+      backdrop-filter: blur(14px);
     }
 
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 18px;
+    /* GALLERY */
+    .gallery {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-top: 20px;
     }
 
-    .card p {
-      font-size: 14px;
-      color: #cfcfd9;
+    .gallery img {
+      height: 260px;
+      border-radius: 18px;
+      flex-shrink: 0;
+      object-fit: cover;
     }
 
     /* FORM */
-    .form-section h2 {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .form-section p {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      color: #cfcfd9;
+    .form-section {
+      background: rgba(255,255,255,0.03);
     }
 
     .form-card {
       max-width: 420px;
-      margin: 0 auto;
+      margin: 40px auto 0;
       background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
       padding: 32px;
+      border-radius: 22px;
       border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+      backdrop-filter: blur(16px);
     }
 
-    .form-card input {
+    input {
       width: 100%;
       padding: 14px 16px;
+      margin-bottom: 14px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.15);
       background: rgba(0,0,0,0.35);
       color: #fff;
       font-size: 15px;
-      margin-bottom: 14px;
-      outline: none;
     }
 
-    .form-card input::placeholder {
+    input::placeholder {
       color: #aaa;
     }
 
-    .form-card button {
+    button.submit {
       width: 100%;
       padding: 14px;
       border-radius: 14px;
@@ -172,104 +157,131 @@
 
     .success {
       text-align: center;
-      font-size: 18px;
+      font-size: 17px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ЭКРАН 1 -->
-  <section class="hero">
-    <div class="container">
-      <h1>Премиальный сайт для заявок</h1>
+<!-- ЭКРАН 1 -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Душевые перегородки<br>на заказ</h1>
+
       <p>
-        Это минималистичный, быстрый и безопасный сайт, который повышает доверие клиентов
-        и превращает обычных посетителей в реальные заявки без лишних вопросов и давления.
+        Изготавливаем и устанавливаем стеклянные душевые перегородки под ваш интерьер.
+        Индивидуальные размеры, качественная фурнитура и аккуратный монтаж.
       </p>
-      <button onclick="document.getElementById('benefits').scrollIntoView({behavior:'smooth'})">
-        Узнать подробнее
+
+      <ul>
+        <li>✔ Подходит для квартир и домов</li>
+        <li>✔ Современный и премиальный внешний вид</li>
+        <li>✔ Надёжное закалённое стекло</li>
+        <li>✔ Консультация и расчёт бесплатно</li>
+      </ul>
+
+      <button onclick="document.getElementById('formSection').scrollIntoView({behavior:'smooth'})">
+        Оставить заявку
       </button>
-      <div class="arrow">⬇️</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ЭКРАН 2 -->
-  <section id="benefits" class="benefits">
-    <div class="container">
-      <h2>Кому это подходит</h2>
-      <p>
-        Сайт идеально подойдёт для специалистов, фрилансеров, сервисов и личных брендов,
-        которым важно выглядеть солидно, вызывать доверие и получать заявки напрямую.
-      </p>
+<!-- ЭКРАН 2 -->
+<section>
+  <div class="container">
+    <h2>Почему выбирают нас</h2>
 
-      <div class="grid">
-        <div class="card">
-          <h3>📩 Прямые заявки</h3>
-          <p>Все обращения приходят сразу вам, без CRM и сложных систем.</p>
-        </div>
-        <div class="card">
-          <h3>⚡ Быстрый старт</h3>
-          <p>Клиенту не нужно разбираться — он понимает суть за 10 секунд.</p>
-        </div>
-        <div class="card">
-          <h3>📱 Мобильный фокус</h3>
-          <p>Сайт идеально выглядит и работает на телефоне.</p>
-        </div>
-        <div class="card">
-          <h3>💎 Премиальный вид</h3>
-          <p>Визуально сайт не отличается от дорогих брендов.</p>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Индивидуальный подход</h3>
+        <p>
+          Каждая перегородка изготавливается строго под размеры вашего помещения,
+          с учётом всех технических нюансов и пожеланий.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Качественные материалы</h3>
+        <p>
+          Используем только закалённое стекло и надёжную фурнитуру,
+          рассчитанную на долгий срок службы.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Аккуратный монтаж</h3>
+        <p>
+          Установка выполняется профессионально, без повреждений плитки
+          и с точной подгонкой.
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ЭКРАН 3 -->
-  <section class="form-section">
-    <div class="container">
-      <h2>Оставить заявку</h2>
-      <p>
-        Заполните форму ниже, и мы свяжемся с вами в ближайшее время
-        для обсуждения деталей и дальнейших шагов.
-      </p>
+<!-- ГАЛЕРЕЯ -->
+<section>
+  <div class="container">
+    <h2>Примеры работ</h2>
 
-      <div class="form-card">
-        <form id="form">
-          <input type="text" name="name" placeholder="Ваше имя" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="tel" name="phone" placeholder="Телефон" required>
-          <button type="submit">Отправить заявку</button>
-        </form>
-      </div>
+    <div class="gallery">
+      <img src="photo1.jpg" alt="">
+      <img src="photo2.jpg" alt="">
+      <img src="photo3.jpg" alt="">
+      <img src="photo4.jpg" alt="">
     </div>
-  </section>
+  </div>
+</section>
 
-  <script>
-    const form = document.getElementById("form");
+<!-- ФОРМА -->
+<section class="form-section" id="formSection">
+  <div class="container">
+    <h2>Оставить заявку</h2>
+    <p style="text-align:center;">
+      Заполните форму ниже, и мы свяжемся с вами для консультации и расчёта стоимости.
+    </p>
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    <div class="form-card">
+      <form id="form">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
 
-      const btn = form.querySelector("button");
-      btn.disabled = true;
-      btn.textContent = "Отправка...";
+        <button type="submit" class="submit">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-      const data = new FormData(form);
+<script>
+  const form = document.getElementById("form");
 
-      try {
-        await fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
-          method: "POST",
-          body: data
-        });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        form.innerHTML = '<div class="success">✅ Заявка успешно отправлена</div>';
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = "Отправить заявку";
-        alert("Ошибка отправки");
-      }
-    });
-  </script>
+    const btn = form.querySelector("button");
+    btn.disabled = true;
+    btn.textContent = "Отправка...";
+
+    const data = new FormData(form);
+
+    try {
+      await fetch("https://eo41x5kvdf5kqs1.m.pipedream.net", {
+        method: "POST",
+        body: data
+      });
+
+      form.innerHTML = '<div class="success">✅ Заявка отправлена</div>';
+    } catch {
+      btn.disabled = false;
+      btn.textContent = "Отправить заявку";
+      alert("Ошибка отправки");
+    }
+  });
+</script>
 
 </body>
-</html>
+      </html>
