@@ -128,28 +128,6 @@
   </style>
 </head>
 <body>
-  <!-- Бургер -->
-<div class="burger" id="burger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-<!-- Выезжающее меню -->
-<div class="side-menu" id="sideMenu">
-  <h3>Информация</h3>
-
-  <p><strong>Наши соцсети</strong></p>
-  <ul>
-    <li>Instagram — здесь будет ссылка</li>
-    <li>Telegram — здесь будет ссылка</li>
-    <li>WhatsApp — здесь будет ссылка</li>
-  </ul>
-
-  <p><strong>Автор сайта</strong></p>
-  <p>Разработка и дизайн под ключ</p>
-</div>
-
 <div class="overlay" id="overlay"></div>
 
   <section class="section">
@@ -267,23 +245,9 @@
     <i class="fa-brands fa-telegram" style="margin-left:6px;"></i> Telegram
   </p>
 </section>
-  <script>
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('sideMenu');
-  const overlay = document.getElementById('overlay');
-
-  burger.onclick = () => {
-    menu.classList.add('active');
-    overlay.classList.add('active');
-  };
-
-  overlay.onclick = () => {
-    menu.classList.remove('active');
-    overlay.classList.remove('active');
-  };
-  </script>
 </body>
 </html>
+
 
 
 
