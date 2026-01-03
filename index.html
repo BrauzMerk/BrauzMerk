@@ -267,8 +267,24 @@
     <i class="fa-brands fa-telegram" style="margin-left:6px;"></i> Telegram
   </p>
 </section>
+  <script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('sideMenu');
+  const overlay = document.getElementById('overlay');
+
+  burger.onclick = () => {
+    menu.classList.add('active');
+    overlay.classList.add('active');
+  };
+
+  overlay.onclick = () => {
+    menu.classList.remove('active');
+    overlay.classList.remove('active');
+  };
+  </script>
 </body>
 </html>
+
 
 
 
