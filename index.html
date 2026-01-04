@@ -11,28 +11,125 @@
   <!-- Иконки -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(1200px at 20% 10%, #1e1e2f, #0b0b12);
+      color: #fff;
+      font-size: 17px;
+    }
+
+    a { color: #6c7cff; text-decoration: none; }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    h1,h2,h3 { margin: 0 0 20px; font-family: 'Playfair Display', serif; }
+    p { line-height: 1.7; margin-bottom: 20px; }
+
+    /* Слайдер */
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding-bottom: 16px;
+    }
+    .slide {
+      min-width: 300px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #222;
+      text-align: center;
+    }
+    .slide img { width: 100%; display: block; }
+    .slide-text { padding: 14px; }
+
+    /* Соцсети */
+    .social-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .social-block {
+      display: flex;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      padding: 14px 20px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+    }
+
+    .social-links a {
+      margin-right: 20px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 17px;
+    }
+    .social-links a:last-child { margin-right: 0; }
+    .social-links i { font-size: 19px; }
+
+    /* Форма */
+    .form-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .field { margin-bottom: 16px; }
+
+    input {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+    input::placeholder { color: #aaa; }
+
+    button.submit-btn {
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      border: none;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #6c7cff, #8a5cff);
+      color: #fff;
+    }
+
+    .success {
+      text-align: center;
+      font-size: 17px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- BURGER MENU -->
-  <div id="burger-wrapper">
-    <div id="burger-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div id="burger-menu">
-      <ul>
-        <li><a href="#socials">Наши соц.сети</a></li>
-        <li><a href="#author">Автор сайта</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- /BURGER MENU -->
-
-  <div class="overlay" id="overlay"></div>
+  
+<div class="overlay" id="overlay"></div>
 
   <section class="section">
     <h1>Добро пожаловать!</h1>
@@ -70,7 +167,7 @@
     </p>
   </section>
 
-  <section class="section" id="socials">
+  <section class="section">
     <div class="form-card">
 
       <div class="social-title">Здесь будут Ваши соц.сети</div>
@@ -100,13 +197,54 @@
     </div>
   </section>
 
-  <section class="section" style="padding-top:20px;" id="contacts">
-    <p style="text-align:center; font-size:15px; opacity:0.8;">
-      После заполнения и отправки заявки, заявка клиента автоматически поступят вам в
-      <i class="fa-brands fa-telegram" style="margin-left:6px;"></i> Telegram
-    </p>
-  </section>
+  <script>
+    const form = document.getElementById("form");
+    const successMsg = document.getElementById("success-msg");
 
-  <script src="script.js"></script>
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector("button");
+      btn.disabled = true;
+      btn.textContent = "Отправка...";
+
+      const name = form.name.value;
+      const phone = form.phone.value;
+
+      const payload = { name, phone };
+
+      try {
+        // Отправка в Pipedream
+        await fetch("https://eoq0utkld8mn942.m.pipedream.net", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        // Отправка в Telegram
+        await fetch(`https://api.telegram.org/bot8515711712:AAFZsU9dlgQ_QG5W438teb1H01pEtOMIbyM/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: 5247142706,
+            text: `Новая заявка\nИмя: ${name}\nТелефон: ${phone}`
+          })
+        });
+
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = "Отправить заявку";
+        alert("Ошибка отправки");
+        console.error(err);
+      }
+    });
+  </script>
+<section class="section" style="padding-top:20px;">
+  <p style="text-align:center; font-size:15px; opacity:0.8;">
+    После заполнения и отправки заявки, заявка клиента автоматически поступят вам в
+    <i class="fa-brands fa-telegram" style="margin-left:6px;"></i> Telegram
+  </p>
+</section>
 </body>
 </html>
