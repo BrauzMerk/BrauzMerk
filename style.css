@@ -60,40 +60,5 @@ button:hover {
   border-radius: 2px;
 }
 
-.burger {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  height: 22px;
-  cursor: pointer;
-  z-index: 1001;
-}
 
-.burger span {
-  display: block;
-  height: 3px;
-  background: #fff;
-  margin-bottom: 6px;
-  border-radius: 2px;
-}
 
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -50%;
-  width: 50%;
-  height: 100vh;
-  background: #0b0b12;
-  padding: 40px 30px;
-  transition: right 0.3s ease;
-  z-index: 1000;
-}
-
-.side-menu.open {
-  right: 0;
-}
-
-.side-menu h3 {
-  margin-top: 0;
-}
