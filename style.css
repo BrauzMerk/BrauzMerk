@@ -60,5 +60,68 @@ button:hover {
   border-radius: 2px;
 }
 
+/* Бургер-меню */
+.burger-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: 'Inter', sans-serif;
+}
+
+.burger-icon {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.burger-icon span {
+  display: block;
+  height: 4px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Меню скрыто по умолчанию */
+.menu-content {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background: rgba(30,30,47,0.95);
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 9998;
+}
+
+.menu-content a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.menu-content.show {
+  right: 0;
+}
+
+/* Анимация бургер-иконок при открытии */
+.burger-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
 
 
