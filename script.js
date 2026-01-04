@@ -41,11 +41,3 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// Бургер-меню
-const burgerIcon = document.getElementById('burger-icon');
-const menuContent = document.getElementById('menu-content');
-
-burgerIcon.addEventListener('click', () => {
-  burgerIcon.classList.toggle('active');
-  menuContent.classList.toggle('show');
-});
